@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*Reset Css*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Variables */
+:root {
+    --main-color: #d90429;
+    --text-color: #020102;
+    --bg-color: #e2e2e2;
+}
+
+section {
+    padding: 4rem 0rem 2rem;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1068px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    display: block;
+    width: 100%;
+    position: fixed;
+    top : 0;
+    left: 0;
+    z-index: 100;
+}
+
+header.shadow {
+    background: var(--bg-color);
+    box-shadow: 4px 4px 20px rgb(15 54 55 / 10%);
+    transition: 0.5s;
+}
+
+header.shadow #search-icon {
+    color: var(--text-color);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+
+#menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    display: none;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.logo span {
+    color: var(--main-color);
+}
+
+.navbar {
+    display: flex;
+    column-gap: 2rem;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.navbar a:hover,
+.navbar .active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+#search-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--bg-color);
+}
+
+.search-box {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    left: 0;
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px 20px rgb(15 54 55 / 10%);
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    clip-path: circle(0% at 100% 0%);
+}
+
+.search-box.active {
+    clip-path: circle(144% at 100% 0%);
+    transition: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.home {
+    margin-top: auto;
+    width: 100%;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    background: url("../img/about/Background-home.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center left;
+}
+
+.home-text {
+    padding-left: 130px;
+}
+
+.home-text h1 {
+    font-size: 2.4rem;
+}
+
+.home-text span {
+    color: var(--main-color);
+}
+
+.home-text p {
+    font-size: 0.938rem;
+    font-weight: 300;
+    margin: 0.5rem 0 1.2rem;
+}
+
+.cars {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ab {
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+.ab1 img {
+    max-width: 500px;
+    max-height: 375px;
+    margin-left: 10rem;
+}
+
+.ab1 {
+    width: 60%;
+}
+
+.ab2 {
+    align-items: center;
+    width: 40%;
+}
+
+.ab2 h2 {
+    font-weight: 550;
+    font-size: 30px;
+    margin-top: 1rem;
+    margin-right: 10rem;
+}
+
+.ab2 p {
+    margin-right: 10rem;
+}
+
+.ab3 {
+    margin-left: 1rem;
+    margin-top: 4rem;
+}
+
+.ab3 p a {
+    color: rgba(0, 0, 0, 0.56);
+    text-decoration: underline;
+}
+
+.footer {
+    padding-top: 3rem;
+    background: var(--text-color);
+    color: #f6f6f6;
+    border-top: 2px solid var(--main-color);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-container .logo {
+    color: var(--bg-color);
+    margin-bottom: 1rem;
+}
+
+.footer-container .footer-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+}
+
+.social a {
+    font-size: 24px;
+    color: var(--bg-color);
+    margin-right: 1rem;
+}
+
+.social a:hover {
+    color: var(--main-color);
+}
+
+.footer-box h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-box a {
+    color: #818181;
+    margin-bottom: 10px;
+}
+
+.footer-box a:hover {
+    color: var(--bg-color);
+}
+
+.copyright {
+    background: var(--text-color);
+    text-align: center;
+    color: var(--bg-color);
+    padding: 20px;
+}

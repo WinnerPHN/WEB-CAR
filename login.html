@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <style>
+        body {
+            background-image: url('asset/img/luffy.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35%;
+            cursor: pointer;
+        }
+        .form-toggle {
+            margin-top: 10px;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body onload="checkLoginStatus()">
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        
+        <div id="login-form">
+            <p class="error" id="login-error">Incorrect login details!</p>
+            <input type="text" id="login-username" placeholder="Username">
+            
+            <div class="password-container">
+                <input type="password" id="login-password" placeholder="Password">
+                <span class="toggle-password" onclick="togglePassword('login-password')">👁️</span>
+            </div>
+
+            <label>
+                <input type="checkbox" id="rememberMe"> Remember me
+            </label>
+
+            <button class="btn" onclick="login()">Login</button>
+            <p class="form-toggle" onclick="showRegister()">Don't have an account? Register</p>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <p class="error" id="register-error"></p>
+            <input type="text" id="register-username" placeholder="Username">
+            <input type="email" id="register-email" placeholder="Email">
+            
+            <div class="password-container">
+                <input type="password" id="register-password" placeholder="Password">
+                <span class="toggle-password" onclick="togglePassword('register-password')">👁️</span>
+            </div>
+
+            <div class="password-container">
+                <input type="password" id="confirm-password" placeholder="Confirm Password">
+                <span class="toggle-password" onclick="togglePassword('confirm-password')">👁️</span>
+            </div>
+
+            <button class="btn" onclick="register()">Register</button>
+            <p class="form-toggle" onclick="showLogin()">Already have an account? Login</p>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("login-username").value;
+            var password = document.getElementById("login-password").value;
+            var rememberMe = document.getElementById("rememberMe").checked;
+            var loginError = document.getElementById("login-error");
+
+            var storedPassword = localStorage.getItem(username);
+
+            if (storedPassword && storedPassword === password) {
+                localStorage.setItem("loggedIn", "true");
+                
+                if (rememberMe) {
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("password", password);
+                } else {
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("password");
+                }
+
+                window.location.href = "index.html";
+            } else {
+                loginError.style.display = "block";
+                loginError.innerText = "Incorrect username or password!";
+            }
+        }
+
+        function register() {
+            var username = document.getElementById("register-username").value;
+            var email = document.getElementById("register-email").value;
+            var password = document.getElementById("register-password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var registerError = document.getElementById("register-error");
+
+            if (username === "" || email === "" || password === "") {
+                registerError.style.display = "block";
+                registerError.innerText = "Please fill in all fields!";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                registerError.style.display = "block";
+                registerError.innerText = "Passwords do not match!";
+                return;
+            }
+
+            if (localStorage.getItem(username)) {
+                registerError.style.display = "block";
+                registerError.innerText = "Username already exists!";
+                return;
+            }
+
+            localStorage.setItem(username, password);
+            alert("Registration successful! You can log in now.");
+            showLogin();
+        }
+
+        function checkLoginStatus() {
+            if (localStorage.getItem("loggedIn") === "true") {
+                window.location.href = "index.html";
+            }
+
+            var savedUsername = localStorage.getItem("username");
+            var savedPassword = localStorage.getItem("password");
+
+            if (savedUsername && savedPassword) {
+                document.getElementById("login-username").value = savedUsername;
+                document.getElementById("login-password").value = savedPassword;
+                document.getElementById("rememberMe").checked = true;
+            }
+        }
+
+        function togglePassword(fieldId) {
+            var input = document.getElementById(fieldId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+
+        function showRegister() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("register-form").style.display = "block";
+            document.getElementById("form-title").innerText = "Register";
+        }
+
+        function showLogin() {
+            document.getElementById("register-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("form-title").innerText = "Login";
+        }
+    </script>
+</body>
+</html>

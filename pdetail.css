@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* biến CSS */
+:root {
+    --main-color: #d90429;
+    --text-color: #020102;
+    --bg-color: #e2e2e2;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    color: var(--text-color);
+}
+
+/* header */
+header {
+    display: block;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: var(--bg-color);
+}
+
+.nav1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+
+.nav1 ul {
+    margin-bottom: 0px;
+}
+
+.logo1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.logo1 span {
+    color: var(--main-color);
+}
+
+.logo1:hover {
+    color: var(--text-color);
+}
+
+.navbar1 {
+    display: flex;
+    column-gap: 2rem;
+}
+
+.navbar1 a {
+    color: var(--text-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.navbar1 a:hover, .navbar1 .active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+    text-decoration: none;
+}
+
+#search-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.search-box {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: var(--bg-color);
+    box-shadow: 4px 4px 20px rgb(15 54 55 / 10%);
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    clip-path: circle(0% at 100% 0%);
+}
+
+.search-box.active {
+    clip-path: circle(144% at 100% 0%);
+    transition: 0.4s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+}
+
+section {
+    padding: 1rem 0 2rem;
+}
+
+.home {
+    margin: auto;
+    width: 100%;
+    min-height: 740px;
+    background-attachment: fixed;
+    background-repeat: no-repeat ;
+    background-size: cover;
+    background-position: center left ;
+}
+.home-text {
+    left: 2.5rem;
+    top: 20rem;
+    position: absolute;
+    font-size: 2rem;
+    color: white;
+}
+
+.home-text h3, .home-text h4 {
+    font-weight: 500;
+}
+
+.home-text h4 {
+    text-decoration: underline;
+}
+
+.home-text h4:hover {
+    cursor: pointer;
+}
+
+.heading1 {
+    text-align: center;
+}
+
+.heading1 span {
+    font-weight: 500;
+    color: var(--main-color);
+}
+
+.cars h2 {
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.bx-chevron-right {
+    color: var(--main-color);
+}
+
+.cars-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.cars-container .box1 {
+    flex: 1 1 17rem;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    width: 45%;
+}
+
+.cars-container .box1 img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 1rem;
+}
+
+.cars-container .table {
+    float: right;
+    width: 65%;
+}
+
+.text-item {
+    width: 100%;
+    display: flex;
+}
+
+.cars-container .box1 .bx {
+    color: var(--main-color);
+    margin: 0.8rem 0;
+}
+
+.cars-container .box1 .btn1 {
+    max-width: 120px;
+}
+
+.btn1 {
+    padding: 10px;
+    text-align: center;
+    background: var(--main-color);
+    color: var(--bg-color);
+    margin-left: 440px;
+}
+
+.btn1:hover {
+    background: #fd052f;
+    color: var(--bg-color);
+}
+
+.box1 .blog-btn {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    color: var(--main-color);
+    margin-left: 217px;
+}
+
+.box1 .blog-btn:hover {
+    color: var(--main-color);
+    column-gap: 0.7rem;
+    transition: 0.4s;
+}
+
+.container1 {
+    max-width: 1068px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container2 .box1{
+    flex: 1 1 17rem;
+    position: relative;
+    padding: 20px 25px 20px 25px;
+    display: flex;
+    flex-direction: column;
+    background: #f6f6f6;
+    border-radius: 0.5rem;
+    max-width: 330px;
+}
+
+.cars-container .box1 h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cars-container .box1 span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+.btn2 {
+    padding: 10px 22px;
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-weight: 400;
+}
+
+.btn2:hover {
+    background: #fd052f;
+    color: var(--bg-color);
+}
+
+.cars-container .box1 .details {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 1.3rem;
+    right: 1rem;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.cars-container .box1 .details:hover {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.footer {
+    background: var(--text-color);
+    color: #f6f6f6;
+    border-top: 2px solid var(--main-color);
+    padding-top: 3rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-container .logo1 {
+    color: var(--bg-color);
+    margin-bottom: 1rem;
+}
+
+.footer-container .footer-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+}
+
+.social a {
+    font-size: 24px;
+    color: var(--bg-color);
+    margin-right: 1rem;
+}
+
+.social a:hover {
+    color: var(--main-color);
+}
+
+.footer-box h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.footer-box a {
+    color: #818181;
+    margin-bottom: 10px;
+}
+
+.footer-box a:hover {
+    color: var(--main-color);
+}
+
+.copyright {
+    padding: 20px;
+    text-align: center;
+    color: var(--bg-color);
+    background: var(--text-color);
+}
