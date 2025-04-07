@@ -1,0 +1,147 @@
+/* Định dạng tổng thể */
+body {
+    background-color: #111; /* Màu nền đen */
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Khung chính */
+.container {
+    background-color: #222;
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Form thêm dữ liệu */
+.Add-data {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.Add-data form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px; /* Tăng khoảng cách giữa các ô */
+    max-width: 700px; /* Giới hạn chiều rộng */
+    margin: auto;
+    padding: 20px;
+}
+
+.Add-data textarea,
+.Add-data input[type="file"],
+.Add-data button {
+    grid-column: span 2; /* Các phần tử này chiếm toàn bộ hàng */
+}
+
+.Add-data input,
+.Add-data textarea,
+.Add-data button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+}
+
+.Add-data textarea {
+    height: 100px; /* Điều chỉnh chiều cao textarea */
+}
+
+.Add-data input[type="file"] {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.Add-data button {
+    background-color: #d96b87;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.Add-data button:hover {
+    background-color: #c05a74;
+}
+
+
+/* Chọn file */
+.custom-file-label {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: black;
+}
+
+.custom-file-label:hover {
+    background-color: #ddd;
+}
+/* Nút Lưu */
+button {
+    background-color: #e75480;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Bảng hiển thị dữ liệu */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #e75480;
+    text-align: center;
+}
+
+th {
+    background-color: #e75480;
+    color: white;
+}
+
+/* Nút Sửa và Xóa */
+.btn-edit {
+    background-color: #e75480;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #e75480;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Link quay lại */
+.buttons a {
+    color: #e75480;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

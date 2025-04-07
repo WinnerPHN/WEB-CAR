@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="asset/css/cart.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        img {
+            width: 120px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="Porsche.html">Products</a> |
+            <a href="cart.html">Cart</a> |
+            <a href="login.html" id="loginLink">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Your Cart</h2>
+        <table id="cart-items-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be inserted here dynamically -->
+            </tbody>
+        </table>
+        <p>Total: $<span id="total-price">0.000</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Thang Luxury</p>
+    </footer>
+
+    <script>
+        // Convert string price like "$219.991" to float
+        function parsePrice(priceStr) {
+            return parseFloat(priceStr.replace(/[$,.]/g, '')) / 1000;
+        }
+
+        // Add an item to the cart
+        function addToCart(name, price, image) {
+            const carDetails = {
+                name: name,
+                price: parsePrice(price),
+                image: image,
+                quantity: 1
+            };
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push(carDetails);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        // Load and render cart
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartTable = document.getElementById("cart-items");
+            let totalPrice = 0;
+
+            cartTable.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                let row = `
+                    <tr>
+                        <td>
+                            <img src="${item.image}" alt="${item.name}"><br>${item.name}
+                        </td>
+                        <td>$${item.price.toFixed(3)}</td>
+                        <td>
+                            <input type="number" min="1" value="${item.quantity}"
+                                onchange="updateQuantity(${index}, this.value)">
+                        </td>
+                        <td>
+                            <button onclick="removeItem(${index})">Remove</button>
+                        </td>
+                    </tr>
+                `;
+                cartTable.innerHTML += row;
+                totalPrice += item.price * item.quantity;
+            });
+
+            document.getElementById("total-price").textContent = totalPrice.toFixed(3);
+        }
+
+        // Remove item
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        // Update quantity
+        function updateQuantity(index, newQuantity) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            newQuantity = parseInt(newQuantity);
+
+            if (newQuantity > 0) {
+                cart[index].quantity = newQuantity;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            } else {
+                alert("Quantity must be at least 1");
+            }
+        }
+
+        // Checkout
+        function checkout() {
+            alert("Checkout successful!");
+            localStorage.removeItem("cart");
+            loadCart();
+        }
+
+        // Auto-fill cart if empty
+        window.onload = function () {
+            if (!localStorage.getItem("cart")) {
+                const initialCart = [
+                    {
+                        name: "718 Cayman T",
+                        price: parsePrice("$219.991"),
+                        image: "asset/img/cars/porsche/pc1.jpg",
+                        quantity: 1
+                    },
+                    {
+                        name: "Taycan 4S",
+                        price: parsePrice("$307.108"),
+                        image: "asset/img/cars/porsche/pc2.jpg",
+                        quantity: 1
+                    },
+                    {
+                        name: "Macan",
+                        price: parsePrice("$192.634"),
+                        image: "asset/img/cars/porsche/pc3.jpg",
+                        quantity: 1
+                    },
+                    {
+                        name: "Cayenne Coupé Platinum",
+                        price: parsePrice("$172.634"),
+                        image: "asset/img/cars/porsche/pc4.jpg",
+                        quantity: 1
+                    },
+                    {
+                        name: "Taycan 4S Cross Turismo",
+                        price: parsePrice("$268.634"),
+                        image: "asset/img/cars/porsche/pc5.jpg",
+                        quantity: 1
+                    },
+                    {
+                        name: "Panamera GTS",
+                        price: parsePrice("$257.634"),
+                        image: "asset/img/cars/porsche/pc6.jpg",
+                        quantity: 1
+                    }
+                ];
+                localStorage.setItem("cart", JSON.stringify(initialCart));
+            }
+
+            loadCart();
+        };
+    </script>
+
+</body>
+</html>
